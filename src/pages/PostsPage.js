@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux' //new
 import { fetchPosts, postsSelector } from '../slices/posts' //new
+import { useNavigate } from "react-router-dom";
 
 // import { Routes, Route } from 'react-router-dom'
 
@@ -17,6 +18,7 @@ import { Post } from '../components/Post'
 const PostsPage = () => {
     const dispatch = useDispatch() //new
     const {posts, loading, hasErrors} = useSelector(postsSelector)
+    let navigate = useNavigate()
 
     useEffect(() => {
         dispatch(fetchPosts())
@@ -24,7 +26,11 @@ const PostsPage = () => {
 
     // Show loading, error, or success state
     const renderPosts = () => {
-        if (loading) return <p>Loading posts...</p>
+        if (loading) {
+            //return navigate('/redirect', {replace: true})
+            return <p>Loading posts...</p>
+        } 
+            
         if (hasErrors) return <p>Unable to display posts.</p>
 
         return posts.map((post) => <Post key={post.id} post={post} />)
