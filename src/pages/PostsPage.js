@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux' //new
-import { fetchPosts, postsSelector } from "../slices/posts"; //new
+import { fetchPosts, postsSelector } from '../slices/posts' //new
+
+// import { Routes, Route } from 'react-router-dom'
+
 // import { connect } from 'react-redux'
 
 // Bring in the asynchronous fetchPosts action
